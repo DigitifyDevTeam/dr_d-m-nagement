@@ -1,15 +1,29 @@
 import { useState } from 'react';
 
 export default function Hero() {
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
+    type: '',
+    lastName: '',
+    firstName: '',
+    phoneFixe: '',
+    phonePortable: '',
     email: '',
+    departureAddress: '',
+    departurePostalCode: '',
     departureCity: '',
+    departureFloors: '',
+    departureElevator: '',
+    departureInfo: '',
+    arrivalAddress: '',
+    arrivalPostalCode: '',
     arrivalCity: '',
-    date: '',
+    arrivalFloors: '',
+    arrivalElevator: '',
     volume: '',
-    message: '',
+    surface: '',
+    date: '',
+    formule: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -130,148 +144,431 @@ export default function Hero() {
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Nom complet */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Nom complet
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Votre nom complet"
-                    className="input-field"
-                    required
-                  />
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Progress Indicator */}
+                <div className="flex items-center justify-center gap-2 mb-6">
+                  {[1, 2, 3].map((step) => (
+                    <div key={step} className="flex items-center">
+                      <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
+                          currentStep >= step
+                            ? 'bg-primary-500 text-white'
+                            : 'bg-gray-200 text-gray-500'
+                        }`}
+                      >
+                        {step}
+                      </div>
+                      {step < 3 && (
+                        <div
+                          className={`w-12 h-1 mx-2 transition-all duration-300 ${
+                            currentStep > step ? 'bg-primary-500' : 'bg-gray-200'
+                          }`}
+                        />
+                      )}
+                    </div>
+                  ))}
                 </div>
 
-                {/* Téléphone */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Téléphone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Ex: 06 12 34 56 78"
-                    className="input-field"
-                    required
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Ex: exemple@email.com"
-                    className="input-field"
-                    required
-                  />
-                </div>
-
-                {/* Départ et Destination - sur la même ligne */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                {/* Step 1: VOS INFORMATIONS */}
+                {currentStep === 1 && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">VOS INFORMATIONS</h3>
+                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Départ
-                    </label>
-                    <input
-                      type="text"
-                      name="departureCity"
-                      value={formData.departureCity}
-                      onChange={handleChange}
-                      placeholder="Ex: Paris"
-                      className="input-field"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Destination
-                    </label>
-                    <input
-                      type="text"
-                      name="arrivalCity"
-                      value={formData.arrivalCity}
-                      onChange={handleChange}
-                      placeholder="Ex: Lyon"
-                      className="input-field"
-                      required
-                    />
-                  </div>
-                </div>
-
-                {/* Date de déménagement et Volume - sur la même ligne */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Date de déménagement
-                    </label>
-                    <input
-                      type="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleChange}
-                      className="input-field"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Volume
+                      Vous êtes un
                     </label>
                     <select
-                      name="volume"
-                      value={formData.volume}
+                      name="type"
+                      value={formData.type}
                       onChange={handleChange}
                       className="input-field"
-                      required
                     >
                       <option value="">Sélectionner...</option>
-                      <option value="studio">Studio (10-20m³)</option>
-                      <option value="t1">T1 (20-30m³)</option>
-                      <option value="t2">T2 (30-40m³)</option>
-                      <option value="t3">T3 (40-60m³)</option>
-                      <option value="t4">T4+ (60m³+)</option>
-                      <option value="maison">Maison</option>
+                      <option value="particulier">Particulier</option>
+                      <option value="entreprise">Entreprise</option>
                     </select>
                   </div>
-                </div>
 
-                {/* Message */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Votre message (optionnel)"
-                    rows={4}
-                    className="input-field resize-none"
-                  />
-                </div>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Nom <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        placeholder="Votre nom"
+                        className="input-field"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Prénom <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        placeholder="Votre prénom"
+                        className="input-field"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transform hover:-translate-y-0.5 transition-all duration-300 text-lg flex items-center justify-center gap-2 group"
-                >
-                  <span>Recevoir mes devis gratuits</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Téléphone Fixe
+                    </label>
+                    <input
+                      type="tel"
+                      name="phoneFixe"
+                      value={formData.phoneFixe}
+                      onChange={handleChange}
+                      placeholder="Ex: 01 23 45 67 89"
+                      className="input-field"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Téléphone Portable <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      name="phonePortable"
+                      value={formData.phonePortable}
+                      onChange={handleChange}
+                      placeholder="Ex: 06 12 34 56 78"
+                      className="input-field"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Votre email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Ex: exemple@email.com"
+                      className="input-field"
+                      required
+                    />
+                  </div>
+                  </div>
+                )}
+
+                {/* Step 2: INFORMATIONS DE DÉPART */}
+                {currentStep === 2 && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">INFORMATIONS DE DÉPART</h3>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Adresse de départ <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="departureAddress"
+                      value={formData.departureAddress}
+                      onChange={handleChange}
+                      placeholder="Votre adresse de départ"
+                      className="input-field"
+                      required
+                    />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Code Postal <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="departurePostalCode"
+                        value={formData.departurePostalCode}
+                        onChange={handleChange}
+                        placeholder="Ex: 75001"
+                        className="input-field"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Ville <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="departureCity"
+                        value={formData.departureCity}
+                        onChange={handleChange}
+                        placeholder="Ex: Paris"
+                        className="input-field"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Nombre d'étages <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        name="departureFloors"
+                        value={formData.departureFloors}
+                        onChange={handleChange}
+                        className="input-field"
+                        required
+                      >
+                        <option value="">Sélectionner...</option>
+                        <option value="0">Rez-de-chaussée</option>
+                        <option value="1">1er étage</option>
+                        <option value="2">2ème étage</option>
+                        <option value="3">3ème étage</option>
+                        <option value="4+">4ème étage et plus</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Ascenseur
+                      </label>
+                      <select
+                        name="departureElevator"
+                        value={formData.departureElevator}
+                        onChange={handleChange}
+                        className="input-field"
+                      >
+                        <option value="">Sélectionner...</option>
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Informations complémentaires pour votre déménagement: exemple: volume, démontage, Piano
+                    </label>
+                    <textarea
+                      name="departureInfo"
+                      value={formData.departureInfo}
+                      onChange={handleChange}
+                      placeholder="Exemple: volume, démontage, Piano"
+                      rows={3}
+                      className="input-field resize-none"
+                    />
+                  </div>
+                  </div>
+                )}
+
+                {/* Step 3: INFORMATIONS D'ARRIVÉE + Additional Fields */}
+                {currentStep === 3 && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">INFORMATIONS D'ARRIVÉE</h3>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Adresse d'arrivée <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="arrivalAddress"
+                      value={formData.arrivalAddress}
+                      onChange={handleChange}
+                      placeholder="Votre adresse d'arrivée"
+                      className="input-field"
+                      required
+                    />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Code Postal <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="arrivalPostalCode"
+                        value={formData.arrivalPostalCode}
+                        onChange={handleChange}
+                        placeholder="Ex: 69001"
+                        className="input-field"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Ville <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="arrivalCity"
+                        value={formData.arrivalCity}
+                        onChange={handleChange}
+                        placeholder="Ex: Lyon"
+                        className="input-field"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Nombre d'étages <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        name="arrivalFloors"
+                        value={formData.arrivalFloors}
+                        onChange={handleChange}
+                        className="input-field"
+                        required
+                      >
+                        <option value="">Sélectionner...</option>
+                        <option value="0">Rez-de-chaussée</option>
+                        <option value="1">1er étage</option>
+                        <option value="2">2ème étage</option>
+                        <option value="3">3ème étage</option>
+                        <option value="4+">4ème étage et plus</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Ascenseur
+                      </label>
+                      <select
+                        name="arrivalElevator"
+                        value={formData.arrivalElevator}
+                        onChange={handleChange}
+                        className="input-field"
+                      >
+                        <option value="">Sélectionner...</option>
+                        <option value="oui">Oui</option>
+                        <option value="non">Non</option>
+                      </select>
+                    </div>
+                  </div>
+
+                    {/* Volume et Surface */}
+                    <div className="grid sm:grid-cols-2 gap-4 border-t border-gray-200 pt-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          Volume (m³)
+                        </label>
+                        <input
+                          type="text"
+                          name="volume"
+                          value={formData.volume}
+                          onChange={handleChange}
+                          placeholder="Ex: 30"
+                          className="input-field"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          Ou Superficie du logement m²
+                        </label>
+                        <input
+                          type="text"
+                          name="surface"
+                          value={formData.surface}
+                          onChange={handleChange}
+                          placeholder="Ex: 50"
+                          className="input-field"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Date et Formule */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          Date Prévue de déménagement
+                        </label>
+                        <input
+                          type="date"
+                          name="date"
+                          value={formData.date}
+                          onChange={handleChange}
+                          className="input-field"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                          Formule
+                        </label>
+                        <select
+                          name="formule"
+                          value={formData.formule}
+                          onChange={handleChange}
+                          className="input-field"
+                        >
+                          <option value="">Choisir votre formule</option>
+                          <option value="economique">Économique</option>
+                          <option value="standard">Standard</option>
+                          <option value="premium">Premium</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Navigation Buttons */}
+                <div className="flex gap-4 pt-4">
+                  {currentStep > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => setCurrentStep(currentStep - 1)}
+                      className="flex-1 bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-xl hover:bg-gray-300 transition-all duration-300"
+                    >
+                      Précédent
+                    </button>
+                  )}
+                  {currentStep < 3 ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        // Validate current step before proceeding
+                        if (currentStep === 1) {
+                          if (!formData.lastName || !formData.firstName || !formData.phonePortable || !formData.email) {
+                            alert('Veuillez remplir tous les champs obligatoires');
+                            return;
+                          }
+                        }
+                        if (currentStep === 2) {
+                          if (!formData.departureAddress || !formData.departurePostalCode || !formData.departureCity || !formData.departureFloors) {
+                            alert('Veuillez remplir tous les champs obligatoires');
+                            return;
+                          }
+                        }
+                        setCurrentStep(currentStep + 1);
+                      }}
+                      className="flex-1 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transform hover:-translate-y-0.5 transition-all duration-300"
+                    >
+                      Suivant
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      className="flex-1 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transform hover:-translate-y-0.5 transition-all duration-300 text-lg flex items-center justify-center gap-2 group"
+                    >
+                      <span>VALIDER MA DEMANDE</span>
+                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
 
                 <p className="text-xs text-center text-gray-400 mt-3">
                   En soumettant ce formulaire, vous acceptez d'être contacté par nos partenaires déménageurs.
