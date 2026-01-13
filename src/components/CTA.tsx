@@ -33,7 +33,7 @@ export default function CTA() {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-            Obtenez gratuitement jusqu'à 5 devis de déménageurs professionnels et économisez jusqu'à 40% sur votre déménagement.
+            Obtenez gratuitement votre devis de déménagement professionnel et déménagez en toute sérénité avec nos équipes expérimentées.
           </p>
 
           {/* CTA buttons */}
@@ -42,7 +42,7 @@ export default function CTA() {
               href="#devis"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-primary-600 font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 text-lg group"
             >
-              <span>Demander mes devis gratuits</span>
+              <span>Demander mon devis gratuit</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -76,7 +76,7 @@ export default function CTA() {
               <svg className="w-5 h-5 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              <span>Déménageurs vérifiés</span>
+              <span>Équipe professionnelle</span>
             </div>
           </div>
         </div>

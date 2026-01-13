@@ -44,7 +44,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-10 mr-8">
-            {['Accueil', 'Services', 'Nos avantages', 'Comment ça marche', 'Témoignages', 'Contact'].map((item, index) => (
+            {['Accueil', 'Services', 'Nos avantages', 'Comment ça marche', 'Contact'].map((item, index) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s+/g, '-').replace(/[àâä]/g, 'a').replace(/[ç]/g, 'c')}`}
@@ -108,7 +108,7 @@ export default function Header() {
           }`}
         >
           <div className="bg-white rounded-2xl shadow-xl p-6 space-y-4">
-            {['Accueil', 'Services', 'Nos avantages', 'Comment ça marche', 'Témoignages', 'Contact'].map((item) => (
+            {['Accueil', 'Services', 'Nos avantages', 'Comment ça marche', 'Contact'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s+/g, '-').replace(/[àâä]/g, 'a').replace(/[ç]/g, 'c')}`}

@@ -68,7 +68,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg sm:text-xl text-white/70 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Comparez et obtenez en <strong className="text-white">24h</strong> des devis de déménageurs professionnels.
+              Obtenez en <strong className="text-white">24h</strong> votre devis de déménagement professionnel.
               Service <strong className="text-white">gratuit</strong> et <strong className="text-white">sans engagement</strong>.
             </p>
 

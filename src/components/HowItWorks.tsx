@@ -2,8 +2,8 @@ export default function HowItWorks() {
   const steps = [
     {
       number: '01',
-      title: 'Décrivez votre projet',
-      description: 'Remplissez notre formulaire en 2 minutes avec les détails de votre déménagement.',
+      title: 'Demandez votre devis',
+      description: 'Remplissez notre formulaire en 2 minutes et obtenez une estimation personnalisée de votre déménagement.',
       icon: (
         <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -12,8 +12,18 @@ export default function HowItWorks() {
     },
     {
       number: '02',
-      title: 'Recevez vos devis',
-      description: 'En moins de 24h, recevez plusieurs devis personnalisés de déménageurs proche de chez vous.',
+      title: 'Évaluation sur mesure',
+      description: 'Nos experts analysent vos besoins spécifiques et vous proposent une solution adaptée à votre projet.',
+      icon: (
+        <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+      ),
+    },
+    {
+      number: '03',
+      title: 'Devis détaillé',
+      description: 'Recevez en moins de 24h un devis transparent avec tous les services inclus et un tarif clair.',
       icon: (
         <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -21,19 +31,9 @@ export default function HowItWorks() {
       ),
     },
     {
-      number: '03',
-      title: 'Comparez les offres',
-      description: 'Analysez les différentes propositions, les services inclus et les tarifs proposés.',
-      icon: (
-        <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-    },
-    {
       number: '04',
-      title: 'Déménagez sereinement',
-      description: 'Choisissez le déménageur qui vous convient et profitez d\'un déménagement sans stress.',
+      title: 'Déménagement professionnel',
+      description: 'Notre équipe expérimentée prend en charge votre déménagement de A à Z avec soin et efficacité.',
       icon: (
         <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -68,7 +68,7 @@ export default function HowItWorks() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto">
-            En quelques étapes simples, trouvez le déménageur idéal pour votre projet.
+            Un processus simple et transparent pour un déménagement réussi et sans stress.
           </p>
         </div>
 
