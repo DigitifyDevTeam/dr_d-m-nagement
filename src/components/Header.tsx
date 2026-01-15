@@ -25,10 +25,12 @@ export default function Header() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-4 group">
             <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:shadow-xl group-hover:shadow-primary-500/40 transition-all duration-300 group-hover:scale-105">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                </svg>
+              <div className="w-16 h-16 rounded-xl overflow-hidden bg-white/80 shadow-lg shadow-primary-500/30 group-hover:shadow-xl group-hover:shadow-primary-500/40 transition-all duration-300 group-hover:scale-105 flex items-center justify-center">
+                <img
+                  src="/logo-doc.png"
+                  alt="Docteur Déménagement"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-secondary-400 rounded-full border-2 border-white animate-pulse"></div>
             </div>
@@ -48,7 +50,7 @@ export default function Header() {
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s+/g, '-').replace(/[àâä]/g, 'a').replace(/[ç]/g, 'c')}`}
-                className={`relative font-medium text-base transition-colors duration-300 group py-2 ${
+                className={`relative font-medium text-base transition-colors duration-300 group py-2 whitespace-nowrap ${
                   isScrolled ? 'text-gray-600 hover:text-primary-600' : 'text-white/90 hover:text-white'
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -74,7 +76,7 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
               </div>
-              <span className="hidden xl:inline">06 05 99 25 10</span>
+              <span className="hidden xl:inline whitespace-nowrap">06 05 99 25 10</span>
             </a>
             <a
               href="#devis"

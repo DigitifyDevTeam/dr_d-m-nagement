@@ -7,7 +7,7 @@ export default function Testimonials() {
       location: 'Paris → Lyon',
       avatar: 'MD',
       rating: 5,
-      text: 'Service impeccable ! J\'ai reçu 4 devis en moins de 24h et j\'ai pu comparer facilement. Le déménageur choisi était ponctuel et très professionnel. Je recommande vivement !',
+      text: 'Service impeccable ! J\'ai reçu mon devis en moins de 24h. L\'équipe était ponctuelle et très professionnelle. Le déménagement s\'est déroulé parfaitement. Je recommande vivement !',
       date: 'Décembre 2025',
     },
     {
@@ -15,7 +15,7 @@ export default function Testimonials() {
       location: 'Marseille → Toulouse',
       avatar: 'TB',
       rating: 5,
-      text: 'Très satisfait de mon expérience. Le formulaire est simple et rapide à remplir. Les déménageurs étaient sérieux et ont pris soin de mes meubles. Aucune casse !',
+      text: 'Très satisfait de mon expérience. Le formulaire est simple et rapide à remplir. L\'équipe était sérieuse et a pris soin de mes meubles. Aucune casse !',
       date: 'Novembre 2025',
     },
     {
@@ -23,7 +23,7 @@ export default function Testimonials() {
       location: 'Bordeaux → Nantes',
       avatar: 'SM',
       rating: 5,
-      text: 'Grâce à Docteur Déménagement, j\'ai économisé plus de 500€ sur mon déménagement. Le processus est transparent et les partenaires sont de confiance.',
+      text: 'Excellente expérience avec Docteur Déménagement ! L\'équipe a été très professionnelle, ponctuelle et soigneuse. Mon déménagement s\'est déroulé parfaitement sans aucun souci.',
       date: 'Octobre 2025',
     },
     {
@@ -39,7 +39,7 @@ export default function Testimonials() {
       location: 'Lille → Strasbourg',
       avatar: 'ER',
       rating: 5,
-      text: 'Une plateforme vraiment pratique qui m\'a fait gagner un temps précieux. Les devis étaient détaillés et sans mauvaise surprise à la fin.',
+      text: 'Un service vraiment pratique qui m\'a fait gagner un temps précieux. Le devis était détaillé et sans mauvaise surprise à la fin. Très professionnel !',
       date: 'Août 2025',
     },
     {
@@ -47,7 +47,7 @@ export default function Testimonials() {
       location: 'Rennes → Montpellier',
       avatar: 'FM',
       rating: 5,
-      text: 'Excellente expérience de A à Z. L\'équipe de déménageurs était sympathique et a pris soin de tous mes effets personnels. Service 5 étoiles !',
+      text: 'Excellente expérience de A à Z. L\'équipe était sympathique et a pris soin de tous mes effets personnels. Service 5 étoiles !',
       date: 'Juillet 2025',
     },
   ];

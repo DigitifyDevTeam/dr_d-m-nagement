@@ -2,7 +2,7 @@ export default function Services() {
   const services = [
     {
       title: 'Déménagement particulier',
-      description: 'Studio, appartement ou maison, nous trouvons le déménageur adapté à vos besoins.',
+      description: 'Studio, appartement ou maison, notre équipe s\'adapte à tous vos besoins de déménagement.',
       icon: (
         <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -12,7 +12,7 @@ export default function Services() {
     },
     {
       title: 'Déménagement entreprise',
-      description: 'Bureaux, locaux commerciaux ou industriels, nos partenaires gèrent tous types de projets.',
+      description: 'Bureaux, locaux commerciaux ou industriels, nous gérons tous types de projets.',
       icon: (
         <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -22,7 +22,7 @@ export default function Services() {
     },
     {
       title: 'Garde-meuble',
-      description: 'Besoin de stocker vos affaires ? Nos partenaires proposent des solutions de stockage sécurisées.',
+      description: 'Besoin de stocker vos affaires ? Nous proposons des solutions de stockage sécurisées.',
       icon: (
         <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -32,7 +32,7 @@ export default function Services() {
     },
     {
       title: 'Monte-meuble',
-      description: 'Accès difficile ? Nos partenaires disposent d\'équipements adaptés pour tous les étages.',
+      description: 'Accès difficile ? Nous disposons d\'équipements adaptés pour tous les étages.',
       icon: (
         <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -42,7 +42,7 @@ export default function Services() {
     },
     {
       title: 'Déménagement international',
-      description: 'Vous partez à l\'étranger ? Nous vous mettons en relation avec des spécialistes internationaux.',
+      description: 'Vous partez à l\'étranger ? Notre équipe gère votre déménagement international avec une expertise reconnue dans le monde entier.',
       icon: (
         <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -58,7 +58,7 @@ export default function Services() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
         </svg>
       ),
-      features: ['Devis personnalisé', 'Services à la carte', 'Prix compétitifs'],
+      features: ['Devis personnalisé', 'Services à la carte', 'Tarifs transparents'],
     },
   ];
 
@@ -78,7 +78,7 @@ export default function Services() {
             <span className="gradient-text">besoin</span>
           </h2>
           <p className="section-subtitle mt-4">
-            Quel que soit votre projet de déménagement, nous avons les partenaires qu'il vous faut.
+            Quel que soit votre projet de déménagement, nous proposons la solution qu'il vous faut.
           </p>
         </div>
 

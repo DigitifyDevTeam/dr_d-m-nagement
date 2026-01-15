@@ -26,11 +26,54 @@ export default function Hero() {
     formule: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission
-    alert('Merci ! Votre demande de devis a été envoyée. Vous serez contacté sous 24h.');
+    
+    try {
+      const response = await fetch('/api/send-email.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert(result.message || 'Merci ! Votre demande de devis a été envoyée. Vous recevrez un email de confirmation sous 24h.');
+        // Réinitialiser le formulaire
+        setFormData({
+          type: '',
+          lastName: '',
+          firstName: '',
+          phoneFixe: '',
+          phonePortable: '',
+          email: '',
+          departureAddress: '',
+          departurePostalCode: '',
+          departureCity: '',
+          departureFloors: '',
+          departureElevator: '',
+          departureInfo: '',
+          arrivalAddress: '',
+          arrivalPostalCode: '',
+          arrivalCity: '',
+          arrivalFloors: '',
+          arrivalElevator: '',
+          volume: '',
+          surface: '',
+          date: '',
+          formule: '',
+        });
+        setCurrentStep(1);
+      } else {
+        alert('Erreur: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement au 06 05 99 25 10.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -70,7 +113,7 @@ export default function Hero() {
           <div className="text-center lg:text-left animate-fade-in">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
               <span className="w-2 h-2 bg-accent-400 rounded-full animate-pulse"></span>
-              <span className="text-white/80 text-sm font-medium">+300 Déménageurs partenaires</span>
+              <span className="text-white/80 text-sm font-medium">Expert en déménagement</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-tight mb-6">
@@ -90,7 +133,7 @@ export default function Hero() {
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
               {[
                 { icon: '✓', text: 'Devis en moins de 24h' },
-                { icon: '✓', text: '+300 Déménageurs' },
+                { icon: '✓', text: '+ 60 techniciens' },
                 { icon: '✓', text: 'Demande en 2 min' },
               ].map((badge, index) => (
                 <div
@@ -109,8 +152,8 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
               {[
                 { value: '15k+', label: 'Clients satisfaits' },
-                { value: '300+', label: 'Partenaires' },
-                { value: '40%', label: 'D\'économies' },
+                { value: '60+', label: 'Techniciens' },
+                { value: '24h', label: 'Délai moyen' },
               ].map((stat, index) => (
                 <div key={index} className="text-center lg:text-left">
                   <div className="text-2xl sm:text-3xl font-display font-bold text-white">{stat.value}</div>
@@ -287,9 +330,9 @@ export default function Hero() {
                     />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Code Postal <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -305,17 +348,17 @@ export default function Hero() {
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Ville <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="departureCity"
-                        value={formData.departureCity}
-                        onChange={handleChange}
-                        placeholder="Ex: Paris"
-                        className="input-field"
-                        required
-                      />
-                    </div>
+                    </label>
+                    <input
+                      type="text"
+                      name="departureCity"
+                      value={formData.departureCity}
+                      onChange={handleChange}
+                      placeholder="Ex: Paris"
+                      className="input-field"
+                      required
+                    />
+                  </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -406,44 +449,44 @@ export default function Hero() {
                         required
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Ville <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="arrivalCity"
-                        value={formData.arrivalCity}
-                        onChange={handleChange}
-                        placeholder="Ex: Lyon"
-                        className="input-field"
-                        required
-                      />
-                    </div>
+                    </label>
+                    <input
+                      type="text"
+                      name="arrivalCity"
+                      value={formData.arrivalCity}
+                      onChange={handleChange}
+                      placeholder="Ex: Lyon"
+                      className="input-field"
+                      required
+                    />
                   </div>
+                </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Nombre d'étages <span className="text-red-500">*</span>
-                      </label>
-                      <select
+                    </label>
+                    <select
                         name="arrivalFloors"
                         value={formData.arrivalFloors}
-                        onChange={handleChange}
-                        className="input-field"
-                        required
-                      >
-                        <option value="">Sélectionner...</option>
+                      onChange={handleChange}
+                      className="input-field"
+                      required
+                    >
+                      <option value="">Sélectionner...</option>
                         <option value="0">Rez-de-chaussée</option>
                         <option value="1">1er étage</option>
                         <option value="2">2ème étage</option>
                         <option value="3">3ème étage</option>
                         <option value="4+">4ème étage et plus</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Ascenseur
                       </label>
                       <select
@@ -494,15 +537,15 @@ export default function Hero() {
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1.5">
                           Date Prévue de déménagement
-                        </label>
-                        <input
-                          type="date"
-                          name="date"
-                          value={formData.date}
-                          onChange={handleChange}
-                          className="input-field"
-                        />
-                      </div>
+                    </label>
+                    <input
+                      type="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleChange}
+                      className="input-field"
+                    />
+                  </div>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1.5">
                           Formule
@@ -510,17 +553,17 @@ export default function Hero() {
                         <select
                           name="formule"
                           value={formData.formule}
-                          onChange={handleChange}
-                          className="input-field"
+                      onChange={handleChange}
+                      className="input-field"
                         >
                           <option value="">Choisir votre formule</option>
                           <option value="economique">Économique</option>
                           <option value="standard">Standard</option>
                           <option value="premium">Premium</option>
                         </select>
-                      </div>
                     </div>
                   </div>
+                </div>
                 )}
 
                 {/* Navigation Buttons */}
@@ -558,20 +601,20 @@ export default function Hero() {
                       Suivant
                     </button>
                   ) : (
-                    <button
-                      type="submit"
+                <button
+                  type="submit"
                       className="flex-1 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transform hover:-translate-y-0.5 transition-all duration-300 text-lg flex items-center justify-center gap-2 group"
-                    >
+                >
                       <span>VALIDER MA DEMANDE</span>
-                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </button>
+                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
                   )}
                 </div>
 
                 <p className="text-xs text-center text-gray-400 mt-3">
-                  En soumettant ce formulaire, vous acceptez d'être contacté par nos partenaires déménageurs.
+                  En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe.
                 </p>
               </form>
             </div>
